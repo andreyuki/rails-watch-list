@@ -1,0 +1,61 @@
+/* Ensure the slider takes the full width */
+.splide {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Hide the pagination bullets */
+.splide__pagination {
+  display: none;
+}
+
+/* Style the cards */
+.splide__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;  /* Fixed width for each slide */
+  height: 300px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card .background {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.card p {
+  font-size: 1.5em;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  top: 43%;
+  left: 0;
+  padding: 0;
+  border-radius: 8px;
+  margin-bottom: 0;
+}

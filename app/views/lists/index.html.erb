@@ -1,0 +1,27 @@
+<div class="banner mb-3">
+  <div class="container">
+    <h1><strong>WATCH LIST</strong></h1>
+    <p>Save and see your movies to watch them latter!</p>
+    <%= link_to "New List", new_list_path, class: "btn btn-danger mt-2 text-light" %>
+  </div>
+</div>
+<div id="card-slider" class="splide" data-controller="splide">
+  <div class="splide__track">
+    <ul class="splide__list">
+      <% @lists.each do |list| %>
+        <% list.movies.each do |movie| %>
+          <li class="splide__slide">
+            <div class="card">
+              <img src="<%= movie.poster_url %>" alt="<%= movie.title %>">
+              <div class="background"></div>
+              <p><%= movie.title %></p>
+            </div>
+            <%# <div class="card-category2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+              Breakfast
+            </div> %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
