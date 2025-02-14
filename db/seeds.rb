@@ -9,8 +9,11 @@
 #   end
 require 'open-uri'
 puts "Cleaning the DB...."
+puts "Deleting Lists...."
 List.destroy_all
+puts "Deleting Movies...."
 Movie.destroy_all
+puts "Deleting Bookmarks...."
 Bookmark.destroy_all
 
 # the Le Wagon copy of the API
