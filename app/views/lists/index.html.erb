@@ -1,8 +1,28 @@
 <div class="banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('banner_image.jpg');">
-  <div class="container">
+  <div class="container" data-controller="modal">
     <h1 class="fw-bold fs-1"><strong>WATCH LIST</strong></h1>
     <p>Save your movies to watch them latter!</p>
-    <%= link_to "New List", new_list_path, class: "btn btn-danger mt-2 text-light" %>
+    <%#= link_to "New List", new_list_path, class: "btn btn-danger mt-2 text-light" %>
+    <button type="button" class="btn btn-danger mt-2 text-light" data-action="click->modal#open">
+      New List
+    </button>
+    <div class="modal fade modal-background-darker" tabindex="-1" data-modal-target="newList">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New List</h5>
+            <button type="button" class="btn-close" data-action="click->modal#close"></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for(@new_list) do |f| %>
+              <%= f.input :name, input_html: { class: 'form-control' } %>
+              <%= f.input :photo, as: :file, input_html: { class: 'form-control' } %>
+              <%= f.submit 'Save', class: 'btn btn-danger text-light w-100 mt-3' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="container">
