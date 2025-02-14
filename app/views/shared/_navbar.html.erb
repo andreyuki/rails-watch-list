@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to lists_path, class: "navbar-brand" do %>
       <%= image_tag "wl_logo.png" %>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,6 +11,12 @@
         <li class="nav-item">
           <%= link_to "Lists", lists_path, class: "nav-link" %>
         </li>
+        <% if controller_name == "lists" && action_name == "show" %>
+          <%= link_to "Add movie", new_list_bookmark_path(@list), class: "nav-link" %>
+        <% end %>
+        <%# <div class="collapse navbar-collapse" data-controller="viewport-entrance-toggle" data-viewport-entrance-toggle-class="back-to-top-container--intersecting">
+          <button class="nav-link button" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Back to top</button>
+        </div> %>
       </ul>
     </div>
   </div>
