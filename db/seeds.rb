@@ -11,6 +11,7 @@ require 'open-uri'
 puts "Cleaning the DB...."
 List.destroy_all
 Movie.destroy_all
+Bookmark.destroy_all
 
 # the Le Wagon copy of the API
 puts "Creating movies.... \n"
@@ -61,7 +62,7 @@ List.all.each do |list|
   (0..rand(5..10)).each do |num|
     puts "picking a movie for the #{list.name}"
     movie = movies.sample
-    puts "Movie #{movie.title} picked..."
+    puts "Movie #{movie.title}, id: #{movie.id} picked..."
     Bookmark.create!(
       comment: movie_comments.sample,
       list: list,
