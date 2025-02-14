@@ -15,6 +15,9 @@ puts "Deleting Movies...."
 Movie.destroy_all
 puts "Deleting Bookmarks...."
 Bookmark.destroy_all
+puts "Lists: #{List.count}."
+puts "Movies: #{Movie.count}."
+puts "Bookmarks #{Bookmark.count}."
 
 # the Le Wagon copy of the API
 puts "Creating movies.... \n"
@@ -35,6 +38,12 @@ puts "Creating movies.... \n"
   end
 end
 
+puts "\n#### Info ######"
+puts "Lists: #{List.count}."
+puts "Movies: #{Movie.count}."
+puts "Bookmarks #{Bookmark.count}."
+puts "#################\n"
+
 puts "Creating lists.... \n"
 List.create!(
   name: "Movies list for later"
@@ -48,7 +57,6 @@ List.create!(
   name: "Worst movies"
 )
 puts "Created #{List.count} lists.\n"
-puts "Adding movies...\n"
 movie_comments = [
   "Amazing cinematography! A must-watch.",
   "The plot was a bit slow, but the acting was top-notch.",
@@ -59,6 +67,14 @@ movie_comments = [
   "Too many plot holes, but the action scenes were fun.",
   "A masterpiece—I'll be thinking about this movie for days."
 ]
+
+puts "\n#### Info ######"
+puts "Lists: #{List.count}."
+puts "Movies: #{Movie.count}."
+puts "Bookmarks #{Bookmark.count}."
+puts "#################\n"
+puts "Adding movies to list / Creating Bookmarks...\n"
+
 List.all.each do |list|
   puts "getting movies"
   movies = Movie.all.to_a
@@ -76,4 +92,9 @@ List.all.each do |list|
   end
 end
 
-puts "... created #{Movie.count} movies."
+
+puts "\n#### Info ######"
+puts "Lists: #{List.count}."
+puts "Movies: #{Movie.count}."
+puts "Bookmarks #{Bookmark.count}."
+puts "#################\n"
