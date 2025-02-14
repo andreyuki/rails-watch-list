@@ -67,7 +67,7 @@ List.all.each do |list|
       list: list,
       movie: movies.sample
     )
-    puts "---Movie: #{movie.title} saved in the list: #{list.name}----"
+    puts "---Movie: #{movie.id} saved in the list: #{list.id}----"
     movies.delete(movie)
   end
 end
