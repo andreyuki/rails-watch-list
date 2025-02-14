@@ -3,5 +3,4 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-import "controllers/splide_controller"
 // import "@splidejs/splide/dist/css/splide.min.css";
