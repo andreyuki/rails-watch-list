@@ -1,8 +1,8 @@
 // Import and register all your controllers from the importmap via controllers/**/*_controller
 import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
-import SplideController from "./splide_controller";
 eagerLoadControllersFrom("controllers", application)
+import SplideController from "./splide_controller";
 
 application.start();
 application.register("splide", SplideController);
