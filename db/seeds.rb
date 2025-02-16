@@ -9,14 +9,17 @@
 #   end
 require 'open-uri'
 puts "Cleaning the DB...."
-puts "Deleting Lists...."
+puts "Deleting Users....\n"
+User.destroy_all
+puts "Users: #{User.count}."
+puts "Deleting Lists....\n"
 List.destroy_all
-puts "Deleting Movies...."
-Movie.destroy_all
-puts "Deleting Bookmarks...."
-Bookmark.destroy_all
 puts "Lists: #{List.count}."
+puts "Deleting Movies....\n"
+Movie.destroy_all
 puts "Movies: #{Movie.count}."
+puts "Deleting Bookmarks....\n"
+Bookmark.destroy_all
 puts "Bookmarks #{Bookmark.count}."
 
 # the Le Wagon copy of the API
@@ -39,24 +42,59 @@ puts "Creating movies.... \n"
 end
 
 puts "\n#### Info ######"
+puts "Users: #{User.count}."
 puts "Lists: #{List.count}."
 puts "Movies: #{Movie.count}."
 puts "Bookmarks #{Bookmark.count}."
 puts "#################\n"
 
-puts "Creating lists.... \n"
+puts "\nCreating Users..."
+User.create!(
+  email: "user1@wly.com",
+  password: "password1"
+)
+
+User.create!(
+  email: "user2@wly.com",
+  password: "password2"
+)
+
+User.create!(
+  email: "user3@wly.com",
+  password: "password3"
+)
+
+puts "\n#### Info ######"
+puts "Users: #{User.count}."
+puts "Lists: #{List.count}."
+puts "Movies: #{Movie.count}."
+puts "Bookmarks #{Bookmark.count}."
+puts "#################\n"
+
+puts "\nCreating lists..."
 List.create!(
-  name: "Movies list for later"
+  name: "Movies list for later",
+  user: User.all.to_a.sample
 )
 
 List.create!(
-  name: "Best movies"
+  name: "Best movies",
+  user: User.all.to_a.sample
 )
 
 List.create!(
-  name: "Worst movies"
+  name: "Worst movies",
+  user: User.all.to_a.sample
 )
-puts "Created #{List.count} lists.\n"
+
+puts "\n#### Info ######"
+puts "Users: #{User.count}."
+puts "Lists: #{List.count}."
+puts "Movies: #{Movie.count}."
+puts "Bookmarks #{Bookmark.count}."
+puts "#################\n"
+puts "\nAdding movies to list / Creating Bookmarks...\n"
+
 movie_comments = [
   "Amazing cinematography! A must-watch.",
   "The plot was a bit slow, but the acting was top-notch.",
@@ -68,13 +106,6 @@ movie_comments = [
   "A masterpiece—I'll be thinking about this movie for days."
 ]
 
-puts "\n#### Info ######"
-puts "Lists: #{List.count}."
-puts "Movies: #{Movie.count}."
-puts "Bookmarks #{Bookmark.count}."
-puts "#################\n"
-puts "Adding movies to list / Creating Bookmarks...\n"
-
 List.all.each do |list|
   puts "getting movies"
   movies = Movie.all.to_a
@@ -82,6 +113,9 @@ List.all.each do |list|
     puts "picking a movie for the #{list.name}"
     movie = movies.sample
     puts "Movie #{movie.title}, id: #{movie.id} picked..."
+    Bookmark.where(list: list.id).to_a.each do |bookmark|
+      puts "List:#{bookmark.list.id}, Movie:#{bookmark.movie.id}"
+    end
     Bookmark.create!(
       comment: movie_comments.sample,
       list: list,
@@ -94,6 +128,7 @@ end
 
 
 puts "\n#### Info ######"
+puts "Users: #{User.count}."
 puts "Lists: #{List.count}."
 puts "Movies: #{Movie.count}."
 puts "Bookmarks #{Bookmark.count}."
